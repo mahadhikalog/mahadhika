@@ -1,6 +1,9 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, inject } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+
+// Inject GTM instance
+const gtm = inject('gtm')
 
 const router = useRouter()
 const route = useRoute()
@@ -24,6 +27,11 @@ const closeMobileMenu = () => {
 
 const isActive = (path) => {
   return route.path === path
+}
+
+// Track navigation clicks
+const trackNavigationClick = (itemName, itemPath) => {
+  gtm.trackButtonClick(`nav_${itemName.toLowerCase()}`, 'header')
 }
 </script>
 
@@ -51,6 +59,7 @@ const isActive = (path) => {
             v-for="item in navigation"
             :key="item.path"
             :to="item.path"
+            @click="trackNavigationClick(item.name, item.path)"
             class="text-sm font-medium transition-colors duration-200"
             :class="isActive(item.path) 
               ? 'text-primary-950 border-b-2 border-primary-950 pb-1' 
@@ -105,7 +114,7 @@ const isActive = (path) => {
           v-for="item in navigation"
           :key="item.path"
           :to="item.path"
-          @click="closeMobileMenu"
+          @click="() => { closeMobileMenu(); trackNavigationClick(item.name, item.path); }"
           class="block py-3 px-4 text-base font-medium rounded-lg transition-colors duration-200"
           :class="isActive(item.path)
             ? 'bg-primary-950 text-white'

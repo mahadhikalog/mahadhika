@@ -1,15 +1,15 @@
 <script setup>
-import AppHeader from './components/AppHeader.vue'
-import AppFooter from './components/AppFooter.vue'
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import PublicLayout from './layouts/PublicLayout.vue'
+
+const route = useRoute()
+const is_admin_shell = computed(() => route.path.startsWith('/admin'))
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col">
-    <AppHeader />
-    <main class="flex-1">
-      <RouterView />
-    </main>
-    <AppFooter />
-  </div>
+  <PublicLayout v-if="!is_admin_shell">
+    <RouterView />
+  </PublicLayout>
+  <RouterView v-else />
 </template>
-

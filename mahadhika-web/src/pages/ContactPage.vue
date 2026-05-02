@@ -3,10 +3,9 @@ import ContactForm from '@/components/ContactForm.vue'
 
 const contact_info = {
   address: 'Jalan Limo Raya No.108 A, Komplek Ruko Limo, Depok, Jawa Barat 16515',
-  email: 'mahadhikalogistik@gmail.com',
+  email: 'contact@mahadhika.com',
   phones: [
-    { name: 'Sos Hendra', number: '+62 821-6399-5688', link: 'tel:+6282163995688' },
-    { name: 'Tareq', number: '+62 811-1180-1118', link: 'tel:+6281111801118' }
+    { name: 'Ayu', number: '+62 811-192-6948', link: 'tel:+628111926948' }
   ]
 }
 </script>

@@ -1,6 +1,9 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, inject } from 'vue'
 import { supabase } from '@/lib/supabase'
+
+// Inject GTM instance
+const gtm = inject('gtm')
 
 const form_data = ref({
   nama: '',
@@ -32,6 +35,9 @@ const submitForm = async () => {
       }])
 
     if (error) throw error
+
+    // Track successful form submission
+    gtm.trackFormSubmission('contact_form', 'contact_inquiry')
 
     is_success.value = true
     form_data.value = {

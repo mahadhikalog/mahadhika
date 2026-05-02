@@ -3,68 +3,67 @@ import { ref } from 'vue'
 import ServiceCard from '@/components/ServiceCard.vue'
 import ValueCard from '@/components/ValueCard.vue'
 import SectorCard from '@/components/SectorCard.vue'
+import ShipmentTrackingSection from '@/components/ShipmentTrackingSection.vue'
 import heroImage from '@/assets/images/hero.png'
+import retailDistribusiImage from '@/assets/images/services/retail.png'
+import solusiLogistikImage from '@/assets/images/services/solusi-logistik.png'
+import transportasiImage from '@/assets/images/services/transportasi.png'
+import pergudanganImage from '@/assets/images/services/pergudangan.png'
+import keunggulanImage from '@/assets/images/services/keunggulan.png'
 
 // WhatsApp Configuration
-const whatsapp_number = '6281380176755' // +62 813-8017-6755 without special characters
-const whatsapp_konsultasi_message = encodeURIComponent('Halo Mahadhika Logistik, saya ingin berkonsultasi gratis tentang layanan logistik untuk bisnis saya.')
+const whatsapp_number = '+628111926948' // +62 811-192-6948 without special characters
 const whatsapp_penawaran_message = encodeURIComponent('Halo Mahadhika Logistik, saya ingin meminta penawaran untuk layanan logistik. Mohon informasi lebih lanjut.')
 
-const whatsapp_konsultasi_url = `https://wa.me/${whatsapp_number}?text=${whatsapp_konsultasi_message}`
 const whatsapp_penawaran_url = `https://wa.me/${whatsapp_number}?text=${whatsapp_penawaran_message}`
 
 const services = [
   {
     title: 'Retail & Distribusi',
     description: 'Pengiriman berbasis kilogram ke seluruh Indonesia dengan jaringan yang luas dan terpercaya.',
-    image: '/images/services/retail-distribusi.jpg',
+    image: retailDistribusiImage,
     cta: 'Lihat Detail'
   },
   {
     title: 'Solusi Logistik',
     description: 'Integrasi layanan logistik dan rantai pasok yang komprehensif untuk bisnis Anda.',
-    image: '/images/services/solusi-logistik.jpg',
+    image: solusiLogistikImage,
     cta: 'Lihat Detail'
   },
   {
     title: 'Transportasi',
     description: 'Moda darat, laut, dan udara yang andal & terpercaya untuk berbagai kebutuhan.',
-    image: '/images/services/transportasi.jpg',
+    image: transportasiImage,
     cta: 'Lihat Detail'
   },
   {
     title: 'Pergudangan',
     description: 'Penyimpanan & pengelolaan stok sesuai kebutuhan dengan standar keamanan tinggi.',
-    image: '/images/services/pergudangan.jpg',
+    image: pergudanganImage,
     cta: 'Lihat Detail'
   }
 ]
 
 const advantages = [
   {
-    title: 'Komitmen Kualitas',
-    description: 'Fokus pada kualitas pelayanan & profesionalisme untuk hubungan kemitraan jangka panjang yang terpercaya & berkelanjutan.',
-    icon: 'shield'
+    title: 'Solusi Fleksibel & Disesuaikan',
+    description: 'Mengakomodasi fluktuasi permintaan dengan solusi bersama atau khusus, memastikan inventori yang tepat di tempat yang tepat pada waktu yang tepat.',
+    icon: 'warehouse'
   },
   {
-    title: 'Fleksibilitas & Pendekatan Adaptif',
-    description: 'Solusi logistik yang disesuaikan dengan kebutuhan Anda dan dikembangkan untuk menghadapi dinamika bisnis masa kini.',
-    icon: 'refresh'
-  },
-  {
-    title: 'Jaringan Luas & Kolaborasi yang Inklusif',
-    description: 'Didukung oleh mitra yang tersebar di seluruh wilayah Indonesia, kami percaya kemajuan logistik adalah melalui kerja kolektif.',
-    icon: 'users'
-  },
-  {
-    title: 'Inovasi & Pengalaman',
-    description: 'Perpaduan antara semangat pembaharuan dengan kredibilitas pengalaman tim pendiri kami dalam mengelola logistik.',
+    title: 'Inovasi Digital',
+    description: 'Memanfaatkan teknologi dan solusi otomatis untuk throughput yang lebih tinggi, efisiensi yang optimal, dan manajemen gudang yang canggih.',
     icon: 'chip'
   },
   {
-    title: 'Teknologi dengan Sentuhan Manusia',
-    description: 'Digitalisasi tepat guna & transparan untuk sistem yang terpercaya. Kami menggabungkan teknologi dengan pelayanan yang empatik.',
-    icon: 'lightbulb'
+    title: 'SDM Terbaik',
+    description: 'Spesialis gudang berpengalaman dan keahlian terdepan untuk memenuhi standar layanan yang tinggi dan profesional.',
+    icon: 'users'
+  },
+  {
+    title: 'Keunggulan Operasional',
+    description: 'Kinerja kelas dunia dengan perbaikan berkelanjutan, kesehatan operasional, keselamatan, dan kualitas sesuai praktik terbaik industri.',
+    icon: 'chart'
   }
 ]
 
@@ -122,8 +121,8 @@ const sectors = [
             Perusahaan logistik & rantai pasok nasional yang modern, inovatif, dan berdaya saing global dengan mengutamakan kualitas pelayanan.
           </p>
           <div class="flex flex-col sm:flex-row gap-4">
-            <a :href="whatsapp_konsultasi_url" target="_blank" rel="noopener noreferrer" class="btn btn-accent">
-              Konsultasi Gratis
+            <a href="#cek-resi" class="btn btn-accent">
+              Cek Resi Pengiriman
             </a>
             <a :href="whatsapp_penawaran_url" target="_blank" rel="noopener noreferrer" class="btn bg-white text-primary-950 hover:bg-gray-100 focus:ring-white">
               Minta Penawaran
@@ -132,6 +131,8 @@ const sectors = [
         </div>
       </div>
     </section>
+
+    <ShipmentTrackingSection />
 
     <!-- About Brief -->
     <!-- <section class="section bg-white">
@@ -158,7 +159,7 @@ const sectors = [
             Solusi logistik terpadu untuk mendukung kebutuhan bisnis Anda
           </p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           <div 
             v-for="service in services"
             :key="service.title"
@@ -184,23 +185,21 @@ const sectors = [
               <p class="text-gray-600 text-sm leading-relaxed mb-4">
                 {{ service.description }}
               </p>
-              <a 
-                :href="whatsapp_konsultasi_url" 
-                target="_blank" 
-                rel="noopener noreferrer"
+              <router-link 
+                to="/layanan"
                 class="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium text-sm transition-colors"
               >
                 <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path>
                 </svg>
                 {{ service.cta }}
-              </a>
+              </router-link>
             </div>
           </div>
         </div>
         <div class="flex flex-col sm:flex-row gap-4 justify-center mt-12">
-          <a :href="whatsapp_konsultasi_url" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-            Konsultasi Gratis
+          <a href="#cek-resi" class="btn btn-primary">
+            Cek Resi Pengiriman
           </a>
           <a :href="whatsapp_penawaran_url" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
             Minta Penawaran
@@ -218,18 +217,59 @@ const sectors = [
             Keunggulan yang membedakan kami dalam memberikan layanan logistik terbaik
           </p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <ValueCard
-            v-for="advantage in advantages"
-            :key="advantage.title"
-            :title="advantage.title"
-            :description="advantage.description"
-            :icon="advantage.icon"
-          />
+        
+        <!-- Two Column Layout: Advantages Cards + Warehouse Image -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <!-- Left Column: Advantages Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div 
+              v-for="advantage in advantages"
+              :key="advantage.title"
+              class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100"
+            >
+              <!-- Icon -->
+              <div class="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center mb-4">
+                <svg v-if="advantage.icon === 'warehouse'" class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                </svg>
+                <svg v-else-if="advantage.icon === 'chip'" class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
+                </svg>
+                <svg v-else-if="advantage.icon === 'users'" class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                </svg>
+                <svg v-else-if="advantage.icon === 'chart'" class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                </svg>
+              </div>
+              
+              <!-- Content -->
+              <h3 class="text-lg font-bold text-gray-900 mb-3">{{ advantage.title }}</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">{{ advantage.description }}</p>
+            </div>
+          </div>
+          
+          <!-- Right Column: Warehouse Image -->
+          <div class="relative">
+            <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+              <img 
+                :src="keunggulanImage" 
+                alt="Keunggulan Mahadhika Logistik Indonesia"
+                class="w-full h-96 object-cover"
+                loading="lazy"
+              />
+              <!-- Overlay for better text contrast if needed -->
+              <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            </div>
+            <!-- Decorative elements -->
+            <div class="absolute -top-4 -right-4 w-24 h-24 bg-red-600 rounded-full opacity-20"></div>
+            <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-primary-600 rounded-full opacity-20"></div>
+          </div>
         </div>
+        
         <div class="flex flex-col sm:flex-row gap-4 justify-center mt-12">
-          <a :href="whatsapp_konsultasi_url" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-            Konsultasi Gratis
+          <a href="#cek-resi" class="btn btn-primary">
+            Cek Resi Pengiriman
           </a>
           <a :href="whatsapp_penawaran_url" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
             Minta Penawaran
@@ -256,8 +296,8 @@ const sectors = [
           />
         </div>
         <div class="flex flex-col sm:flex-row gap-4 justify-center mt-12">
-          <a :href="whatsapp_konsultasi_url" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-            Konsultasi Gratis
+          <a href="#cek-resi" class="btn btn-primary">
+            Cek Resi Pengiriman
           </a>
           <a :href="whatsapp_penawaran_url" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
             Minta Penawaran
@@ -276,9 +316,14 @@ const sectors = [
           <p class="text-xl text-gray-200 mb-8">
             Hubungi kami untuk mendiskusikan kebutuhan logistik bisnis Anda
           </p>
-          <a :href="whatsapp_konsultasi_url" target="_blank" rel="noopener noreferrer" class="btn btn-accent">
-            Konsultasi Gratis Sekarang
-          </a>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a :href="whatsapp_penawaran_url" target="_blank" rel="noopener noreferrer" class="btn btn-accent">
+              Minta Penawaran
+            </a>
+            <a href="#cek-resi" class="btn border-2 border-white text-white hover:bg-white hover:text-primary-950 focus:ring-white">
+              Cek Resi Pengiriman
+            </a>
+          </div>
         </div>
       </div>
     </section>

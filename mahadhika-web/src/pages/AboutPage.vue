@@ -209,7 +209,7 @@ const advantages = [
     </section>
 
     <!-- Team -->
-    <section class="section bg-white">
+    <!-- <section class="section bg-white">
       <div class="container-custom">
         <div class="text-center mb-12">
           <h2 class="section-title">Tim Pendiri</h2>
@@ -227,7 +227,7 @@ const advantages = [
           />
         </div>
       </div>
-    </section>
+    </section> -->
   </div>
 </template>
 

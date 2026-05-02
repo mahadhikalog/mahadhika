@@ -72,26 +72,26 @@ const services = [
             <div>
               <p class="text-gray-400 mb-1">Email</p>
               <a 
-                href="mailto:mahadhikalogistik@gmail.com" 
+                href="mailto:contact@mahadhika.com" 
                 class="text-gray-300 hover:text-white transition-colors duration-200"
               >
-                mahadhikalogistik@gmail.com
+                contact@mahadhika.com
               </a>
             </div>
             <div>
               <p class="text-gray-400 mb-1">Telepon</p>
               <a 
+                href="tel:+628111926948" 
+                class="text-gray-300 hover:text-white transition-colors duration-200 block"
+              >
+                (+62) 811-192-6948 (Ayu)
+              </a>
+              <!-- <a 
                 href="tel:+6282163995688" 
                 class="text-gray-300 hover:text-white transition-colors duration-200 block"
               >
                 (+62) 821-6399-5688
-              </a>
-              <a 
-                href="tel:+6281111801118" 
-                class="text-gray-300 hover:text-white transition-colors duration-200 block"
-              >
-                (+62) 811-1180-1118
-              </a>
+              </a> -->
             </div>
           </div>
         </div>
